@@ -184,6 +184,72 @@ h1, h2, h3, .serif {
 .btn-sm { padding: 10px 22px; font-size: 13px; min-height: 40px; }
 
 /* =====================================================
+   FINAL SUBMIT — CALL TO ACTION
+===================================================== */
+.btn-cta {
+  background: linear-gradient(135deg, var(--ember), var(--gold));
+  box-shadow: 0 10px 30px rgba(241,196,15,0.35), 0 0 0 0 rgba(41,128,185,0.4);
+  animation: cta-pulse 2.2s ease-in-out infinite;
+  font-size: 16px;
+  padding: 17px 40px;
+}
+@keyframes cta-pulse {
+  0%, 100% { box-shadow: 0 10px 30px rgba(241,196,15,0.35), 0 0 0 0 rgba(41,128,185,0.35); }
+  50%      { box-shadow: 0 10px 34px rgba(241,196,15,0.45), 0 0 0 10px rgba(41,128,185,0); }
+}
+
+.submit-cue {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  margin-top: 30px;
+  font-family: 'Manrope', sans-serif; font-weight: 600; font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--ember);
+  text-align: center;
+}
+.submit-cue-text { white-space: nowrap; }
+.submit-cue-arrow {
+  display: inline-block;
+  animation: cue-bounce 1.4s ease-in-out infinite;
+  font-size: 16px;
+}
+@keyframes cue-bounce {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50%      { transform: translateY(6px); opacity: 1; }
+}
+
+/* Sticky footer keeps the submit action reachable on long forms */
+.sticky-submit-bar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
+  display: flex; justify-content: center;
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+  background: linear-gradient(to top, rgba(244,246,246,0.96) 60%, rgba(244,246,246,0));
+  backdrop-filter: blur(6px);
+  transform: translateY(120%);
+  opacity: 0;
+  transition: transform .35s cubic-bezier(.22,1,.36,1), opacity .35s ease;
+  pointer-events: none;
+}
+.sticky-submit-bar.show { transform: translateY(0); opacity: 1; pointer-events: auto; }
+.sticky-submit-bar-inner {
+  width: 100%; max-width: 680px;
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  padding: 8px 8px 8px 20px;
+  box-shadow: 0 10px 30px rgba(44,62,80,0.16);
+}
+.sticky-submit-label {
+  font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600;
+  color: var(--plum);
+}
+.sticky-submit-bar .btn-cta { padding: 12px 24px; font-size: 14px; }
+@media (max-width: 420px) {
+  .sticky-submit-label { display: none; }
+  .sticky-submit-bar-inner { justify-content: center; padding: 8px; }
+}
+
+/* =====================================================
    PROGRESS BAR
 ===================================================== */
 #progress-wrap {
@@ -441,8 +507,12 @@ a.skip-link { color: var(--ink-soft); font-size: 13px; text-decoration: underlin
   padding: 14px 18px 10px;
   cursor: pointer;
   user-select: none;
+  min-height: 44px; /* comfortable tap target */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 .date-label-row:hover { background: rgba(41,128,185,0.04); }
+.date-label-row:active { background: rgba(41,128,185,0.08); }
 
 .date-display-text {
   font-family: 'Manrope', sans-serif;
@@ -466,6 +536,9 @@ input.date-real-input {
   -webkit-appearance: none;
   appearance: none;
   box-sizing: border-box;
+  min-height: 48px; /* comfortable tap target */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 input.date-real-input:focus {
   background: rgba(41,128,185,0.05);
@@ -551,6 +624,25 @@ input.date-real-input::-webkit-calendar-picker-indicator {
 
   /* Hide mouse glow — no pointer on touch */
   #mouse-glow { display: none; }
+
+  /* Date picker — larger, easier-to-tap layout on phones */
+  .date-wrapper { border-radius: 16px; }
+  .date-label-row {
+    padding: 16px 16px 12px;
+    min-height: 50px;
+    gap: 10px;
+  }
+  .date-display-text { font-size: 15px; }
+  input.date-real-input {
+    padding: 14px 16px 16px;
+    font-size: 16px;
+    min-height: 52px;
+  }
+  /* Give the native calendar icon more room to tap accurately */
+  input.date-real-input::-webkit-calendar-picker-indicator {
+    padding: 6px;
+    margin-right: -6px;
+  }
 }
 
 /* =====================================================

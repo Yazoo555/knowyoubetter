@@ -2,28 +2,45 @@
    DATA
 --------------------------------------------------------- */
 const QUESTIONS = [
-  { id:'feeling', type:'choice', q:"How are you honestly feeling about all of this?",
-    options:[ {l:'Excited',e:'😊'}, {l:'Curious',e:'🙂'}, {l:'Unsure',e:'😅'}, {l:'Just going with the flow',e:'😐'}, {l:'Optimistic',e:'✨'} ] },
-  { id:'impression', type:'choiceOther', q:"What was your first impression of me?",
-    options:[ {l:'Friendly'}, {l:'Quiet'}, {l:'Funny'}, {l:'Confusing 😂'}, {l:"Didn't get enough time to know"} ] },
-  { id:'firstMeeting', type:'choice', q:"What do you think our first meeting felt like?",
-    options:[ {l:'Awkward'}, {l:'Comfortable'}, {l:'Funny'}, {l:'Too formal'}, {l:'Wish we talked more'} ] },
-  { id:'archInspiration', type:'choice', q:"As an architect, which style of space do you feel most drawn to? 🏛️",
-    options:[ {l:'Clean & minimal'}, {l:'Warm & cozy'}, {l:'Bold & expressive'}, {l:'Natural & organic'}, {l:'A mix of everything'} ] },
-  { id:'archDream', type:'textarea', q:"If you could design any building — no budget, no limits — what would it be and why?", ph:"Dream big 🏗️" },
-  { id:'messageComfort', type:'slider', q:"How comfortable are you chatting over messages?",
-    labels:['Pretty hesitant','Getting there','Fairly comfortable','Very comfortable','Completely at ease'] },
-  { id:'communication', type:'checkbox', q:"What kind of communication do you enjoy?",
-    options:['Texting','Phone calls','Meeting for coffee','Long walks','Voice notes','Anything works'] },
-  { id:'qualities', type:'chips', q:"What qualities matter most to you?",
-    options:['Kindness','Respect','Humor','Ambition','Family values','Honesty','Communication','Patience','Trust','Support','Growth'] },
-  { id:'birthday', type:'date', q:"Since your birthday is coming up soon, I wanted to ask—when is your special day? 🎂" },
-  { id:'marriageMeaning', type:'textarea', q:"What does marriage mean to you?", ph:"Take your time — there's no right answer." },
-  { id:'dreams', type:'text', q:"What are your biggest dreams?", ph:"Big or small, all of it counts." },
-  { id:'career', type:'choice', q:"What does your career path look like right now?",
-    options:[ {l:'Growing in architecture'}, {l:'Exploring new directions'}, {l:'Further studies'}, {l:'Thinking of something independent'}, {l:'Still figuring it out'} ] },
-  { id:'living', type:'choice', q:"Where would you imagine settling down?",
-    options:[ {l:'Stay in Nepal'}, {l:'Move abroad someday'}, {l:'Open to either'}, {l:'Not sure yet'} ] },
+  {
+    id: 'feeling', type: 'choice', q: "How are you honestly feeling about all of this?",
+    options: [{ l: 'Excited', e: '😊' }, { l: 'Curious', e: '🙂' }, { l: 'Unsure', e: '😅' }, { l: 'Just going with the flow', e: '😐' }, { l: 'Optimistic', e: '✨' }]
+  },
+  {
+    id: 'impression', type: 'choiceOther', q: "What was your first impression of me?",
+    options: [{ l: 'Friendly' }, { l: 'Quiet' }, { l: 'Funny' }, { l: 'Confusing 😂' }, { l: "Didn't get enough time to know" }]
+  },
+  {
+    id: 'firstMeeting', type: 'choice', q: "What do you think our first meeting felt like?",
+    options: [{ l: 'Awkward' }, { l: 'Comfortable' }, { l: 'Funny' }, { l: 'Too formal' }, { l: 'Wish we talked more' }]
+  },
+  {
+    id: 'archInspiration', type: 'choice', q: "As an architect, which style of space do you feel most drawn to? 🏛️",
+    options: [{ l: 'Clean & minimal' }, { l: 'Warm & cozy' }, { l: 'Bold & expressive' }, { l: 'Natural & organic' }, { l: 'A mix of everything' }]
+  },
+  { id: 'archDream', type: 'textarea', q: "If you could design any building — no budget, no limits — what would it be and why?", ph: "Dream big 🏗️" },
+  {
+    id: 'messageComfort', type: 'slider', q: "How comfortable are you chatting over messages?",
+    labels: ['Pretty hesitant', 'Getting there', 'Fairly comfortable', 'Very comfortable', 'Completely at ease']
+  },
+  {
+    id: 'communication', type: 'checkbox', q: "What kind of communication do you enjoy?",
+    options: ['Texting', 'Phone calls', 'Meeting for coffee', 'Long walks', 'Voice notes', 'Anything works']
+  },
+  {
+    id: 'qualities', type: 'chips', q: "What qualities matter most to you?",
+    options: ['Kindness', 'Respect', 'Humor', 'Ambition', 'Family values', 'Honesty', 'Communication', 'Patience', 'Trust', 'Support', 'Growth']
+  },
+  { id: 'birthday', type: 'date', q: "Since your birthday is coming up soon, I wanted to ask—when is your special day? 🎂" },
+  { id: 'dreams', type: 'text', q: "What are your biggest dreams?", ph: "Big or small, all of it counts." },
+  {
+    id: 'career', type: 'choice', q: "What does your career path look like right now?",
+    options: [{ l: 'Growing in architecture' }, { l: 'Exploring new directions' }, { l: 'Further studies' }, { l: 'Thinking of something independent' }, { l: 'Still figuring it out' }]
+  },
+  {
+    id: 'living', type: 'choice', q: "Where would you imagine settling down?",
+    options: [{ l: 'Stay in Nepal' }, { l: 'Move abroad someday' }, { l: 'Open to either' }, { l: 'Not sure yet' }]
+  },
 ];
 
 const NZ_INTRO = [
@@ -34,23 +51,21 @@ const NZ_INTRO = [
   "I'm not saying anything definitive — just that life feels a little different now.",
   "And I wanted you to know that."
 ];
-const NZ_Q = { id:'nz', type:'choice', q:"I'm curious — how do you think about big life decisions like relocating?",
-  options:[ {l:'I like having a plan and sticking to it'}, {l:'I prefer staying close to home and roots'}, {l:'It depends on what life brings'}, {l:'I think it\'s best talked through together'} ] };
 
 const QUESTIONS2 = [
-  { id:'worries', type:'textarea', q:"What worries you the most about an arranged marriage?", ph:"This stays between us." },
-  { id:'emotionalSafety', type:'textarea', q:"What makes someone feel emotionally safe for you?", ph:"" },
+  { id: 'worries', type: 'textarea', q: "What worries you the most about an arranged marriage?", ph: "This stays between us." },
+  { id: 'emotionalSafety', type: 'textarea', q: "What makes someone feel emotionally safe for you?", ph: "" },
 ];
 
 const FUN = [
-  { id:'fun1', a:'Tea', b:'Coffee' },
-  { id:'fun2', a:'Mountains', b:'Beaches' },
-  { id:'fun3', a:'Cats', b:'Dogs' },
-  { id:'fun4', a:'Morning', b:'Night' },
-  { id:'fun5', a:'Books', b:'Movies' },
-  { id:'fun6', a:'Stay Home', b:'Travel' },
-  { id:'fun7', a:'Rain', b:'Sunshine' },
-  { id:'fun8', a:'Cooking together', b:'Eating outside' },
+  { id: 'fun1', a: 'Tea', b: 'Coffee' },
+  { id: 'fun2', a: 'Mountains', b: 'Beaches' },
+  { id: 'fun3', a: 'Cats', b: 'Dogs' },
+  { id: 'fun4', a: 'Morning', b: 'Night' },
+  { id: 'fun5', a: 'Books', b: 'Movies' },
+  { id: 'fun6', a: 'Stay Home', b: 'Travel' },
+  { id: 'fun7', a: 'Rain', b: 'Sunshine' },
+  { id: 'fun8', a: 'Cooking together', b: 'Eating outside' },
 ];
 
 const REVEAL_AREAS = [
@@ -71,8 +86,12 @@ const REVEAL_AREAS = [
   {
     label: 'Openness to connection',
     pct: a => {
-      const comfort = parseInt(a.messageComfort) || 0;
-      return Math.round((comfort / 4) * 100);
+      // messageComfort is already stored as a 0-100 value from the slider,
+      // so it can be used directly as a percentage (previously this divided
+      // by 4 as if it were a 0-4 index, which produced values far above 100%).
+      const comfort = parseInt(a.messageComfort, 10);
+      if (isNaN(comfort)) return 0;
+      return Math.min(100, Math.max(0, Math.round(comfort)));
     }
   },
   {
@@ -98,7 +117,7 @@ const REVEAL_AREAS = [
   {
     label: 'Lifestyle & Preferences',
     pct: a => {
-      const funAnswered = ['fun1','fun2','fun3','fun4','fun5','fun6','fun7','fun8'].filter(k => !!a[k]).length;
+      const funAnswered = ['fun1', 'fun2', 'fun3', 'fun4', 'fun5', 'fun6', 'fun7', 'fun8'].filter(k => !!a[k]).length;
       return Math.round((funAnswered / 8) * 100);
     }
   },
@@ -113,11 +132,11 @@ const REVEAL_AREAS = [
 const SHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbzw7TFgUjuBZK51mPT5FkAO93HqNoP3HLGn-OacV7fb-k2UUIv-vhTqt1mVN5KpHA/exec';
 
 let submitted = false;
-function submitToSheet(){
-  if(!SHEET_WEBHOOK_URL || submitted) return;
+function submitToSheet() {
+  if (!SHEET_WEBHOOK_URL || submitted) return;
   submitted = true;
-  const payload = { 
-    ...answers, 
+  const payload = {
+    ...answers,
     submittedAt: new Date().toISOString(),
     authToken: 'zfSODhzV2XodMrYxARvH1yF8CpnxPUze8ulM069eNod'
   };
@@ -126,7 +145,7 @@ function submitToSheet(){
     mode: 'no-cors', // Apps Script web apps don't return readable CORS headers; this still delivers the request
     headers: { 'Content-Type': 'text/plain;charset=utf-8' },
     body: JSON.stringify(payload)
-  }).catch(()=>{ submitted = false; });
+  }).catch(() => { submitted = false; });
 }
 
 /* ---------------------------------------------------------
@@ -134,45 +153,50 @@ function submitToSheet(){
 --------------------------------------------------------- */
 let answers = {};
 
-function saveAnswers(){
+function saveAnswers() {
   // No caching in localStorage as per user request to start fresh on page refresh.
 }
 
 // Build full screen sequence
 const SCREENS = [];
-SCREENS.push({ type:'welcome' });
-SCREENS.push({ type:'story', lines:[
-  "I know our first meeting was a little awkward.",
-  "We were surrounded by family.",
-  "Maybe neither of us knew what to say.",
-  "That's okay.",
-  "Real conversations take time."
-]});
-SCREENS.push({ type:'story', lines:[
-  "I don't know what you're thinking.",
-  "You might like me.",
-  "You might not.",
-  "You may still be deciding.",
-  "And that's completely okay."
-]});
-QUESTIONS.forEach(q => SCREENS.push({ type:'question', q }));
-SCREENS.push({ type:'story', lines:[
-  "By the way,",
-  "just a quick detail about me—",
-  "my eyeglass prescription power is -4.75.",
-  "Just so you know!"
-]});
-SCREENS.push({ type:'story', lines: NZ_INTRO, isNZ:true });
-SCREENS.push({ type:'question', q: NZ_Q });
-QUESTIONS2.forEach(q => SCREENS.push({ type:'question', q }));
-SCREENS.push({ type:'fun' });
-SCREENS.push({ type:'reveal' });
-SCREENS.push({ type:'letter' });
-SCREENS.push({ type:'final' });
-SCREENS.push({ type:'success' });
+SCREENS.push({ type: 'welcome' });
+SCREENS.push({
+  type: 'story', lines: [
+    "I know our first meeting was a little awkward.",
+    "We were surrounded by family.",
+    "Maybe neither of us knew what to say.",
+    "That's okay.",
+    "Real conversations take time."
+  ]
+});
+SCREENS.push({
+  type: 'story', lines: [
+    "I don't know what you're thinking.",
+    "You might like me.",
+    "You might not.",
+    "You may still be deciding.",
+    "And that's completely okay."
+  ]
+});
+QUESTIONS.forEach(q => SCREENS.push({ type: 'question', q }));
+SCREENS.push({
+  type: 'story', lines: [
+    "By the way,",
+    "just a quick detail about me—",
+    "my eyeglass prescription power is -4.75.",
+    "Just so you know!"
+  ]
+});
+SCREENS.push({ type: 'story', lines: NZ_INTRO, isNZ: true });
+QUESTIONS2.forEach(q => SCREENS.push({ type: 'question', q }));
+SCREENS.push({ type: 'fun' });
+SCREENS.push({ type: 'reveal' });
+SCREENS.push({ type: 'letter' });
+SCREENS.push({ type: 'final' });
+SCREENS.push({ type: 'success' });
 
 let current = 0;
-const totalQuestionScreens = SCREENS.filter(s=>s.type==='question'||s.type==='fun').length;
+const totalQuestionScreens = SCREENS.filter(s => s.type === 'question' || s.type === 'fun').length;
 
 /* ---------------------------------------------------------
    RENDER HELPERS
@@ -181,12 +205,12 @@ const app = document.getElementById('app');
 const progressBar = document.getElementById('progress-bar');
 const stepLabel = document.getElementById('step-label');
 
-function setProgress(){
-  const qIndex = SCREENS.slice(0, current+1).filter(s=>s.type==='question'||s.type==='fun').length;
-  const pct = Math.min(100, Math.round((qIndex/totalQuestionScreens)*100));
-  if(current <= 1){ progressBar.style.width = '0%'; stepLabel.style.opacity = '0'; }
-  else if(SCREENS[current].type==='letter' || SCREENS[current].type==='final' || SCREENS[current].type==='success'){
-    progressBar.style.width='100%'; stepLabel.style.opacity='0';
+function setProgress() {
+  const qIndex = SCREENS.slice(0, current + 1).filter(s => s.type === 'question' || s.type === 'fun').length;
+  const pct = Math.min(100, Math.round((qIndex / totalQuestionScreens) * 100));
+  if (current <= 1) { progressBar.style.width = '0%'; stepLabel.style.opacity = '0'; }
+  else if (SCREENS[current].type === 'letter' || SCREENS[current].type === 'final' || SCREENS[current].type === 'success') {
+    progressBar.style.width = '100%'; stepLabel.style.opacity = '0';
   } else {
     progressBar.style.width = pct + '%';
     stepLabel.style.opacity = '1';
@@ -194,84 +218,84 @@ function setProgress(){
   }
 }
 
-function goTo(i){
-  if(i<0 || i>=SCREENS.length) return;
+function goTo(i) {
+  if (i < 0 || i >= SCREENS.length) return;
   current = i;
   render();
-  window.scrollTo({top:0, behavior:'instant' in window ? 'instant':'auto'});
+  window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
   setProgress();
 }
-function next(){ goTo(current+1); }
-function prev(){ goTo(current-1); }
+function next() { goTo(current + 1); }
+function prev() { goTo(current - 1); }
 
-function rippleEffect(e, btn){
+function rippleEffect(e, btn) {
   const r = document.createElement('span');
-  r.className='ripple';
+  r.className = 'ripple';
   const rect = btn.getBoundingClientRect();
   const size = Math.max(rect.width, rect.height);
-  r.style.width = r.style.height = size+'px';
-  r.style.left = (e.clientX - rect.left - size/2)+'px';
-  r.style.top = (e.clientY - rect.top - size/2)+'px';
+  r.style.width = r.style.height = size + 'px';
+  r.style.left = (e.clientX - rect.left - size / 2) + 'px';
+  r.style.top = (e.clientY - rect.top - size / 2) + 'px';
   btn.appendChild(r);
-  setTimeout(()=>r.remove(), 650);
+  setTimeout(() => r.remove(), 650);
 }
-document.addEventListener('click', (e)=>{
+document.addEventListener('click', (e) => {
   const btn = e.target.closest('.btn');
-  if(btn) rippleEffect(e, btn);
+  if (btn) rippleEffect(e, btn);
 });
 
-function spawnSparkle(){
+function spawnSparkle() {
   const h = document.createElement('div');
-  h.className='float-sparkle';
-  h.textContent='✨';
-  h.style.left = (40 + Math.random()*20) + '%';
+  h.className = 'float-sparkle';
+  h.textContent = '✨';
+  h.style.left = (40 + Math.random() * 20) + '%';
   h.style.bottom = '10%';
   document.body.appendChild(h);
-  setTimeout(()=>h.remove(), 3300);
+  setTimeout(() => h.remove(), 3300);
 }
 let lastSparkle = 0;
-function maybeSpawnSparkle(){
+function maybeSpawnSparkle() {
   const now = Date.now();
-  if(now - lastSparkle > 14000 && Math.random() < 0.5){
+  if (now - lastSparkle > 14000 && Math.random() < 0.5) {
     lastSparkle = now;
     spawnSparkle();
   }
 }
 
-function navRow(opts){
-  const {showBack=true, nextLabel='Continue', onNext=next, nextDisabled=false} = opts || {};
+function navRow(opts) {
+  const { showBack = true, nextLabel = 'Continue', onNext = next, nextDisabled = false } = opts || {};
   const wrap = document.createElement('div');
-  wrap.className='nav-row';
-  const backEl = document.createElement(showBack? 'span':'div');
-  if(showBack){
-    backEl.className='skip-link';
-    backEl.textContent='← Back';
+  wrap.className = 'nav-row';
+  const backEl = document.createElement(showBack ? 'span' : 'div');
+  if (showBack) {
+    backEl.className = 'skip-link';
+    backEl.textContent = '← Back';
     backEl.onclick = prev;
   }
   wrap.appendChild(backEl);
   const nb = document.createElement('button');
-  nb.className='btn'+(nextDisabled?'':'');
+  nb.className = 'btn' + (nextDisabled ? '' : '');
   nb.innerHTML = `<span>${nextLabel}</span><span aria-hidden=\"true\">→</span>`;
-  nb.style.opacity = nextDisabled? '0.5':'1';
-  nb.style.pointerEvents = nextDisabled? 'none':'auto';
+  nb.style.opacity = nextDisabled ? '0.5' : '1';
+  nb.style.pointerEvents = nextDisabled ? 'none' : 'auto';
   nb.onclick = onNext;
   wrap.appendChild(nb);
   return wrap;
 }
 
-function fadeInChildren(container){
+function fadeInChildren(container) {
   const els = container.querySelectorAll('.fade-up');
-  els.forEach((el,i)=>{
-    setTimeout(()=>el.classList.add('in'), 120 + i*90);
+  els.forEach((el, i) => {
+    setTimeout(() => el.classList.add('in'), 120 + i * 90);
   });
 }
 
 /* ---------------------------------------------------------
    SCREEN RENDERERS
 --------------------------------------------------------- */
-function renderWelcome(){
+function renderWelcome() {
   const stage = document.createElement('div');
-  stage.className='stage';
+  stage.className = 'stage';
   stage.innerHTML = `
     <div class="panel" style="text-align:center;">
       <div class="eyebrow fade-up" style="margin-bottom:18px;">a small space, just for us</div>
@@ -288,47 +312,48 @@ function renderWelcome(){
   return stage;
 }
 
-function renderStory(screen){
+function renderStory(screen) {
   const stage = document.createElement('div');
-  stage.className='stage';
+  stage.className = 'stage';
   const panel = document.createElement('div');
-  panel.className='panel';
-  panel.style.textAlign='center';
-  screen.lines.forEach(line=>{
+  panel.className = 'panel';
+  panel.style.textAlign = 'center';
+  screen.lines.forEach(line => {
     const p = document.createElement('p');
-    p.className='story-line';
+    p.className = 'story-line';
     p.textContent = line;
     panel.appendChild(p);
   });
   const btn = document.createElement('button');
-  btn.className='btn fade-up';
-  btn.style.marginTop='10px';
-  btn.innerHTML = `<span>${screen.isNZ? "Okay, I'll answer honestly":"Continue"}</span><span aria-hidden=\"true\">→</span>`;
+  btn.className = 'btn fade-up';
+  btn.style.marginTop = '10px';
+  btn.innerHTML = `<span>${screen.isNZ ? "Okay, I'll answer honestly" : "Continue"}</span><span aria-hidden=\"true\">→</span>`;
   btn.onclick = next;
   panel.appendChild(btn);
   stage.appendChild(panel);
   return stage;
 }
 
-function activateStoryLines(stage){
+function activateStoryLines(stage) {
   const lines = stage.querySelectorAll('.story-line');
-  lines.forEach((l,i)=> setTimeout(()=>l.classList.add('in'), 300 + i*650));
+  lines.forEach((l, i) => setTimeout(() => l.classList.add('in'), 300 + i * 650));
   const btn = stage.querySelector('.btn');
-  if(btn){ btn.style.opacity='0'; btn.style.transition='opacity .8s ease'; 
-    setTimeout(()=>{ btn.style.opacity='1'; }, 300 + lines.length*650 + 200);
+  if (btn) {
+    btn.style.opacity = '0'; btn.style.transition = 'opacity .8s ease';
+    setTimeout(() => { btn.style.opacity = '1'; }, 300 + lines.length * 650 + 200);
   }
 }
 
-function renderQuestionShell(q){
+function renderQuestionShell(q) {
   const stage = document.createElement('div');
-  stage.className='stage';
+  stage.className = 'stage';
   const panel = document.createElement('div');
-  panel.className='panel glass fade-up qpanel';
+  panel.className = 'panel glass fade-up qpanel';
 
   const head = document.createElement('div');
-  head.className='qhead';
+  head.className = 'qhead';
   const num = document.createElement('div');
-  num.className='num';
+  num.className = 'num';
   num.textContent = 'Question';
   const h2 = document.createElement('h2');
   h2.textContent = q.q;
@@ -336,25 +361,25 @@ function renderQuestionShell(q){
   panel.appendChild(head);
 
   const body = document.createElement('div');
-  body.className='qbody';
+  body.className = 'qbody';
   panel.appendChild(body);
 
   stage.appendChild(panel);
-  return {stage, panel, body};
+  return { stage, panel, body };
 }
 
-function renderChoiceBody(body, q, key){
+function renderChoiceBody(body, q, key) {
   const list = document.createElement('div');
-  q.options.forEach(opt=>{
+  q.options.forEach(opt => {
     const label = typeof opt === 'string' ? opt : opt.l;
     const emoji = typeof opt === 'string' ? null : opt.e;
     const el = document.createElement('div');
-    el.className='choice' + (answers[key]===label ? ' selected':'');
-    el.innerHTML = (emoji? `<span class=\"emoji\">${emoji}</span>`:'') + `<span>${label}</span>`;
-    el.onclick = ()=>{
+    el.className = 'choice' + (answers[key] === label ? ' selected' : '');
+    el.innerHTML = (emoji ? `<span class=\"emoji\">${emoji}</span>` : '') + `<span>${label}</span>`;
+    el.onclick = () => {
       answers[key] = label;
       saveAnswers();
-      [...list.children].forEach(c=>c.classList.remove('selected'));
+      [...list.children].forEach(c => c.classList.remove('selected'));
       el.classList.add('selected');
       updateNextState();
     };
@@ -364,26 +389,26 @@ function renderChoiceBody(body, q, key){
   return list;
 }
 
-function renderQuestion(q){
-  const {stage, panel, body} = renderQuestionShell(q);
-  let updateNextStateRef = ()=>{};
-  function updateNextState(){ updateNextStateRef(); }
+function renderQuestion(q) {
+  const { stage, panel, body } = renderQuestionShell(q);
+  let updateNextStateRef = () => { };
+  function updateNextState() { updateNextStateRef(); }
 
-  if(q.type === 'choice'){
-    renderChoiceBody(body, q, q.id).querySelectorAll('.choice').forEach(()=>{}); 
+  if (q.type === 'choice') {
+    renderChoiceBody(body, q, q.id).querySelectorAll('.choice').forEach(() => { });
     // re-bind with closure access to updateNextState
-    body.innerHTML='';
+    body.innerHTML = '';
     const list = document.createElement('div');
-    q.options.forEach(opt=>{
+    q.options.forEach(opt => {
       const label = typeof opt === 'string' ? opt : opt.l;
       const emoji = typeof opt === 'string' ? null : opt.e;
       const el = document.createElement('div');
-      el.className='choice' + (answers[q.id]===label ? ' selected':'');
-      el.innerHTML = (emoji? `<span class=\"emoji\">${emoji}</span>`:'') + `<span>${label}</span>`;
-      el.onclick = ()=>{
+      el.className = 'choice' + (answers[q.id] === label ? ' selected' : '');
+      el.innerHTML = (emoji ? `<span class=\"emoji\">${emoji}</span>` : '') + `<span>${label}</span>`;
+      el.onclick = () => {
         answers[q.id] = label;
         saveAnswers();
-        [...list.children].forEach(c=>c.classList.remove('selected'));
+        [...list.children].forEach(c => c.classList.remove('selected'));
         el.classList.add('selected');
         refreshNav();
       };
@@ -392,64 +417,64 @@ function renderQuestion(q){
     body.appendChild(list);
   }
 
-  else if(q.type === 'choiceOther'){
+  else if (q.type === 'choiceOther') {
     const list = document.createElement('div');
-    q.options.forEach(opt=>{
+    q.options.forEach(opt => {
       const label = opt.l;
       const el = document.createElement('div');
-      el.className='choice' + (answers[q.id]===label ? ' selected':'');
+      el.className = 'choice' + (answers[q.id] === label ? ' selected' : '');
       el.innerHTML = `<span>${label}</span>`;
-      el.onclick = ()=>{
+      el.onclick = () => {
         answers[q.id] = label;
         saveAnswers();
-        [...list.children].forEach(c=>c.classList.remove('selected'));
+        [...list.children].forEach(c => c.classList.remove('selected'));
         el.classList.add('selected');
-        otherInput.style.display='none';
+        otherInput.style.display = 'none';
         refreshNav();
       };
       list.appendChild(el);
     });
     const otherChoice = document.createElement('div');
-    const isOtherSelected = answers[q.id] && !q.options.find(o=>o.l===answers[q.id]);
-    otherChoice.className='choice' + (isOtherSelected? ' selected':'');
+    const isOtherSelected = answers[q.id] && !q.options.find(o => o.l === answers[q.id]);
+    otherChoice.className = 'choice' + (isOtherSelected ? ' selected' : '');
     otherChoice.innerHTML = `<span>Other</span>`;
     const otherInput = document.createElement('input');
-    otherInput.type='text';
-    otherInput.placeholder='Tell me in your own words…';
-    otherInput.style.marginTop='-4px';
-    otherInput.style.marginBottom='14px';
-    otherInput.style.display = isOtherSelected ? 'block':'none';
-    if(isOtherSelected) otherInput.value = answers[q.id];
-    otherChoice.onclick = ()=>{
-      [...list.children].forEach(c=>c.classList.remove('selected'));
+    otherInput.type = 'text';
+    otherInput.placeholder = 'Tell me in your own words…';
+    otherInput.style.marginTop = '-4px';
+    otherInput.style.marginBottom = '14px';
+    otherInput.style.display = isOtherSelected ? 'block' : 'none';
+    if (isOtherSelected) otherInput.value = answers[q.id];
+    otherChoice.onclick = () => {
+      [...list.children].forEach(c => c.classList.remove('selected'));
       otherChoice.classList.add('selected');
-      otherInput.style.display='block';
+      otherInput.style.display = 'block';
       otherInput.focus();
     };
-    otherInput.oninput = ()=>{ answers[q.id] = otherInput.value; saveAnswers(); refreshNav(); };
+    otherInput.oninput = () => { answers[q.id] = otherInput.value; saveAnswers(); refreshNav(); };
     list.appendChild(otherChoice);
     body.appendChild(list);
     body.appendChild(otherInput);
   }
 
-  else if(q.type === 'slider'){
+  else if (q.type === 'slider') {
     const wrap = document.createElement('div');
     const valLabel = document.createElement('div');
-    valLabel.style.textAlign='center';
-    valLabel.style.fontFamily="'Fraunces',serif";
-    valLabel.style.fontStyle='italic';
-    valLabel.style.fontSize='20px';
-    valLabel.style.color='var(--ember)';
-    valLabel.style.marginBottom='8px';
+    valLabel.style.textAlign = 'center';
+    valLabel.style.fontFamily = "'Fraunces',serif";
+    valLabel.style.fontStyle = 'italic';
+    valLabel.style.fontSize = '20px';
+    valLabel.style.color = 'var(--ember)';
+    valLabel.style.marginBottom = '8px';
     const slider = document.createElement('input');
-    slider.type='range'; slider.min=0; slider.max=100;
+    slider.type = 'range'; slider.min = 0; slider.max = 100;
     slider.value = answers[q.id] !== undefined ? answers[q.id] : 50;
-    function labelFor(v){
-      const idx = Math.min(q.labels.length-1, Math.floor(v/ (101/q.labels.length)));
+    function labelFor(v) {
+      const idx = Math.min(q.labels.length - 1, Math.floor(v / (101 / q.labels.length)));
       return q.labels[idx] + ' (' + v + ')';
     }
     valLabel.textContent = labelFor(slider.value);
-    slider.oninput = ()=>{
+    slider.oninput = () => {
       valLabel.textContent = labelFor(slider.value);
       answers[q.id] = Number(slider.value);
       saveAnswers();
@@ -458,24 +483,24 @@ function renderQuestion(q){
     wrap.appendChild(valLabel);
     wrap.appendChild(slider);
     const scale = document.createElement('div');
-    scale.style.display='flex'; scale.style.justifyContent='space-between';
-    scale.style.fontSize='12px'; scale.style.color='var(--ink-soft)';
+    scale.style.display = 'flex'; scale.style.justifyContent = 'space-between';
+    scale.style.fontSize = '12px'; scale.style.color = 'var(--ink-soft)';
     scale.innerHTML = '<span>0</span><span>100</span>';
     wrap.appendChild(scale);
     body.appendChild(wrap);
-    if(answers[q.id]===undefined){ answers[q.id]=50; }
+    if (answers[q.id] === undefined) { answers[q.id] = 50; }
   }
 
-  else if(q.type === 'checkbox'){
+  else if (q.type === 'checkbox') {
     const list = document.createElement('div');
     const selected = new Set(answers[q.id] || []);
-    q.options.forEach(label=>{
+    q.options.forEach(label => {
       const el = document.createElement('div');
-      el.className='choice' + (selected.has(label)?' selected':'');
+      el.className = 'choice' + (selected.has(label) ? ' selected' : '');
       el.innerHTML = `<span>${label}</span>`;
-      el.onclick = ()=>{
-        if(selected.has(label)){ selected.delete(label); el.classList.remove('selected'); }
-        else{ selected.add(label); el.classList.add('selected'); }
+      el.onclick = () => {
+        if (selected.has(label)) { selected.delete(label); el.classList.remove('selected'); }
+        else { selected.add(label); el.classList.add('selected'); }
         answers[q.id] = [...selected];
         saveAnswers();
         refreshNav();
@@ -485,17 +510,17 @@ function renderQuestion(q){
     body.appendChild(list);
   }
 
-  else if(q.type === 'chips'){
+  else if (q.type === 'chips') {
     const wrap = document.createElement('div');
-    wrap.style.textAlign='center';
+    wrap.style.textAlign = 'center';
     const selected = new Set(answers[q.id] || []);
-    q.options.forEach(label=>{
+    q.options.forEach(label => {
       const chip = document.createElement('span');
-      chip.className='chip' + (selected.has(label)?' selected':'');
+      chip.className = 'chip' + (selected.has(label) ? ' selected' : '');
       chip.textContent = label;
-      chip.onclick = ()=>{
-        if(selected.has(label)){ selected.delete(label); chip.classList.remove('selected'); }
-        else{ selected.add(label); chip.classList.add('selected'); }
+      chip.onclick = () => {
+        if (selected.has(label)) { selected.delete(label); chip.classList.remove('selected'); }
+        else { selected.add(label); chip.classList.add('selected'); }
         answers[q.id] = [...selected];
         saveAnswers();
         refreshNav();
@@ -505,8 +530,8 @@ function renderQuestion(q){
     body.appendChild(wrap);
   }
 
-  else if(q.type === 'text' || q.type === 'date'){
-    if(q.type === 'date'){
+  else if (q.type === 'text' || q.type === 'date') {
+    if (q.type === 'date') {
       const todayStr = new Date().toLocaleDateString('en-CA'); // 'YYYY-MM-DD'
 
       const wrapper = document.createElement('div');
@@ -524,15 +549,15 @@ function renderQuestion(q){
       const displayLabel = document.createElement('span');
       displayLabel.className = 'date-display-text';
 
-      function formatDate(val){
-        if(!val) return '';
-        const [y,m,d] = val.split('-');
-        const names = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-        return `${parseInt(d)} ${names[parseInt(m)-1]} ${y}`;
+      function formatDate(val) {
+        if (!val) return '';
+        const [y, m, d] = val.split('-');
+        const names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        return `${parseInt(d)} ${names[parseInt(m) - 1]} ${y}`;
       }
 
-      function updateLabel(){
-        if(input.value){
+      function updateLabel() {
+        if (input.value) {
           displayLabel.textContent = formatDate(input.value);
           displayLabel.style.color = 'var(--ink)';
         } else {
@@ -559,8 +584,8 @@ function renderQuestion(q){
       errMsg.style.display = 'none';
       errMsg.textContent = 'Please pick a date from today onwards 🙂';
 
-      input.addEventListener('change', ()=>{
-        if(input.value && input.value < todayStr){
+      input.addEventListener('change', () => {
+        if (input.value && input.value < todayStr) {
           input.value = '';
           errMsg.style.display = 'block';
           answers[q.id] = '';
@@ -574,8 +599,8 @@ function renderQuestion(q){
       });
 
       // Clicking the label row also opens the picker
-      labelRow.addEventListener('click', ()=>{
-        try { input.showPicker(); } catch(e) { input.click(); }
+      labelRow.addEventListener('click', () => {
+        try { input.showPicker(); } catch (e) { input.click(); }
       });
 
       updateLabel();
@@ -587,32 +612,32 @@ function renderQuestion(q){
       input.type = 'text';
       input.placeholder = q.ph || '';
       input.value = answers[q.id] || '';
-      input.addEventListener('input', ()=>{ answers[q.id]=input.value; saveAnswers(); refreshNav(); });
+      input.addEventListener('input', () => { answers[q.id] = input.value; saveAnswers(); refreshNav(); });
       body.appendChild(input);
     }
   }
 
-  else if(q.type === 'textarea'){
+  else if (q.type === 'textarea') {
     const ta = document.createElement('textarea');
     ta.rows = 5;
     ta.placeholder = q.ph || '';
     ta.value = answers[q.id] || '';
-    ta.oninput = ()=>{ answers[q.id]=ta.value; saveAnswers(); refreshNav(); };
+    ta.oninput = () => { answers[q.id] = ta.value; saveAnswers(); refreshNav(); };
     body.appendChild(ta);
   }
 
   const navHolder = document.createElement('div');
   panel.appendChild(navHolder);
 
-  function hasAnswer(){
+  function hasAnswer() {
     const v = answers[q.id];
-    if(q.type==='checkbox' || q.type==='chips') return v && v.length>0;
-    if(q.type==='slider') return true;
+    if (q.type === 'checkbox' || q.type === 'chips') return v && v.length > 0;
+    if (q.type === 'slider') return true;
     return v !== undefined && v !== null && String(v).trim() !== '';
   }
-  function refreshNav(){
-    navHolder.innerHTML='';
-    navHolder.appendChild(navRow({ showBack: current>0, nextDisabled: !hasAnswer() }));
+  function refreshNav() {
+    navHolder.innerHTML = '';
+    navHolder.appendChild(navRow({ showBack: current > 0, nextDisabled: !hasAnswer() }));
   }
   refreshNav();
   updateNextStateRef = refreshNav;
@@ -620,33 +645,33 @@ function renderQuestion(q){
   return stage;
 }
 
-function renderFun(){
+function renderFun() {
   const stage = document.createElement('div');
-  stage.className='stage';
+  stage.className = 'stage';
   const panel = document.createElement('div');
-  panel.className='panel glass fade-up';
+  panel.className = 'panel glass fade-up';
   panel.style.padding = 'clamp(28px,5vw,48px)';
   panel.innerHTML = `<div class="eyebrow" style="margin-bottom:8px;">just for fun</div>
   <h2 style="color:var(--plum); margin:0 0 26px 0; font-size:clamp(22px,4vw,28px);">A few lighter ones</h2>`;
 
   const grid = document.createElement('div');
-  FUN.forEach(f=>{
+  FUN.forEach(f => {
     const row = document.createElement('div');
-    row.style.marginBottom='18px';
+    row.style.marginBottom = '18px';
     const label = document.createElement('div');
-    label.style.fontSize='13px'; label.style.color='var(--ink-soft)'; label.style.marginBottom='8px';
+    label.style.fontSize = '13px'; label.style.color = 'var(--ink-soft)'; label.style.marginBottom = '8px';
     label.textContent = f.a + ' or ' + f.b + '?';
     row.appendChild(label);
     const pair = document.createElement('div');
-    pair.style.display='flex'; pair.style.gap='10px';
-    [f.a, f.b].forEach(opt=>{
+    pair.style.display = 'flex'; pair.style.gap = '10px';
+    [f.a, f.b].forEach(opt => {
       const chip = document.createElement('span');
-      chip.className='chip' + (answers[f.id]===opt ? ' selected':'');
-      chip.style.flex='1'; chip.style.textAlign='center'; chip.style.margin='0';
+      chip.className = 'chip' + (answers[f.id] === opt ? ' selected' : '');
+      chip.style.flex = '1'; chip.style.textAlign = 'center'; chip.style.margin = '0';
       chip.textContent = opt;
-      chip.onclick = ()=>{
-        answers[f.id]=opt; saveAnswers();
-        pair.querySelectorAll('.chip').forEach(c=>c.classList.remove('selected'));
+      chip.onclick = () => {
+        answers[f.id] = opt; saveAnswers();
+        pair.querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
         chip.classList.add('selected');
         refreshNav();
       };
@@ -659,9 +684,9 @@ function renderFun(){
 
   const navHolder = document.createElement('div');
   panel.appendChild(navHolder);
-  function refreshNav(){
-    navHolder.innerHTML='';
-    navHolder.appendChild(navRow({ showBack:true, nextLabel:'See where we align' }));
+  function refreshNav() {
+    navHolder.innerHTML = '';
+    navHolder.appendChild(navRow({ showBack: true, nextLabel: 'See where we align' }));
   }
   refreshNav();
 
@@ -669,11 +694,11 @@ function renderFun(){
   return stage;
 }
 
-function renderReveal(){
+function renderReveal() {
   const stage = document.createElement('div');
-  stage.className='stage';
+  stage.className = 'stage';
   const panel = document.createElement('div');
-  panel.className='panel glass fade-up';
+  panel.className = 'panel glass fade-up';
   panel.style.padding = 'clamp(28px,5vw,48px)';
   panel.innerHTML = `
     <div class="eyebrow" style="margin-bottom:8px;">a gentle reflection</div>
@@ -683,10 +708,10 @@ function renderReveal(){
     </p>
   `;
   const list = document.createElement('div');
-  REVEAL_AREAS.forEach(area=>{
+  REVEAL_AREAS.forEach(area => {
     const filled = area.pct(answers);
     const row = document.createElement('div');
-    row.className='reveal-row';
+    row.className = 'reveal-row';
     row.innerHTML = `
       <div style="width:150px; font-size:14px; color:var(--plum); font-weight:600; flex-shrink:0;">${area.label}</div>
       <div class="reveal-bar-track"><div class="reveal-bar-fill" data-w="${filled}"></div></div>
@@ -697,40 +722,40 @@ function renderReveal(){
   panel.appendChild(list);
   const navHolder = document.createElement('div');
   panel.appendChild(navHolder);
-  navHolder.appendChild(navRow({ showBack:true, nextLabel:'Continue' }));
+  navHolder.appendChild(navRow({ showBack: true, nextLabel: 'Continue' }));
   stage.appendChild(panel);
   return stage;
 }
 
-function activateReveal(stage){
-  setTimeout(()=>{
-    stage.querySelectorAll('.reveal-bar-fill').forEach(el=>{
+function activateReveal(stage) {
+  setTimeout(() => {
+    stage.querySelectorAll('.reveal-bar-fill').forEach(el => {
       el.style.width = el.dataset.w + '%';
     });
   }, 350);
 }
 
-function renderLetter(){
+function renderLetter() {
   const stage = document.createElement('div');
-  stage.className='stage';
+  stage.className = 'stage';
   const panel = document.createElement('div');
-  panel.className='panel';
-  panel.style.textAlign='center';
+  panel.className = 'panel';
+  panel.style.textAlign = 'center';
 
   const env = document.createElement('div');
-  env.className='envelope';
+  env.className = 'envelope';
   env.innerHTML = `
     <div class="env-body"></div>
     <div class="env-flap"></div>
     <div class="env-seal">✉</div>
   `;
   const hint = document.createElement('div');
-  hint.className='env-hint';
-  hint.textContent='tap the envelope';
+  hint.className = 'env-hint';
+  hint.textContent = 'tap the envelope';
 
   const letterWrap = document.createElement('div');
-  letterWrap.className='hide';
-  letterWrap.style.marginTop='30px';
+  letterWrap.className = 'hide';
+  letterWrap.style.marginTop = '30px';
   const lines = [
     "Thank you.",
     "I know this was unusual.",
@@ -741,8 +766,8 @@ function renderLetter(){
     "Thank you for giving this a chance."
   ];
   const paper = document.createElement('div');
-  paper.className='letter-paper';
-  lines.forEach(l=>{
+  paper.className = 'letter-paper';
+  lines.forEach(l => {
     const p = document.createElement('p');
     p.textContent = l;
     paper.appendChild(p);
@@ -750,21 +775,21 @@ function renderLetter(){
   letterWrap.appendChild(paper);
 
   const navHolder = document.createElement('div');
-  navHolder.className='hide';
-  navHolder.style.marginTop='28px';
-  navHolder.style.maxWidth='560px';
-  navHolder.style.marginLeft='auto'; navHolder.style.marginRight='auto';
-  navHolder.appendChild(navRow({ showBack:false, nextLabel:'Continue' }));
+  navHolder.className = 'hide';
+  navHolder.style.marginTop = '28px';
+  navHolder.style.maxWidth = '560px';
+  navHolder.style.marginLeft = 'auto'; navHolder.style.marginRight = 'auto';
+  navHolder.appendChild(navRow({ showBack: false, nextLabel: 'Continue' }));
 
-  env.onclick = ()=>{
-    if(env.classList.contains('open')) return;
+  env.onclick = () => {
+    if (env.classList.contains('open')) return;
     env.classList.add('open');
-    hint.style.opacity='0';
-    setTimeout(()=>{
+    hint.style.opacity = '0';
+    setTimeout(() => {
       letterWrap.classList.remove('hide');
       navHolder.classList.remove('hide');
       const ps = paper.querySelectorAll('p');
-      ps.forEach((p,i)=> setTimeout(()=>p.classList.add('in'), 200+i*450));
+      ps.forEach((p, i) => setTimeout(() => p.classList.add('in'), 200 + i * 450));
     }, 500);
   };
 
@@ -776,26 +801,26 @@ function renderLetter(){
   return stage;
 }
 
-function buildSummaryText(){
+function buildSummaryText() {
   let out = "What she shared:\n\n";
-  const allQ = [...QUESTIONS, NZ_Q, ...QUESTIONS2];
-  allQ.forEach(q=>{
+  const allQ = [...QUESTIONS, ...QUESTIONS2];
+  allQ.forEach(q => {
     const v = answers[q.id];
-    if(v===undefined || v==='' || (Array.isArray(v) && v.length===0)) return;
-    out += "• " + q.q + "\n   " + (Array.isArray(v)? v.join(', ') : v) + "\n\n";
+    if (v === undefined || v === '' || (Array.isArray(v) && v.length === 0)) return;
+    out += "• " + q.q + "\n   " + (Array.isArray(v) ? v.join(', ') : v) + "\n\n";
   });
-  FUN.forEach(f=>{
-    if(answers[f.id]) out += "• " + f.a + " or " + f.b + " → " + answers[f.id] + "\n";
+  FUN.forEach(f => {
+    if (answers[f.id]) out += "• " + f.a + " or " + f.b + " → " + answers[f.id] + "\n";
   });
   return out;
 }
 
-function renderFinal(){
+function renderFinal() {
   const stage = document.createElement('div');
-  stage.className='stage';
+  stage.className = 'stage';
   const panel = document.createElement('div');
-  panel.className='panel';
-  panel.style.textAlign='center';
+  panel.className = 'panel';
+  panel.style.textAlign = 'center';
   panel.innerHTML = `
     <p class="fade-up story-line" style="display:block;">Whatever happens from here&hellip;</p>
     <p class="fade-up story-line" style="display:block;">I'm glad we got to know each other a little better.</p>
@@ -803,10 +828,10 @@ function renderFinal(){
   `;
 
   const askBack = document.createElement('div');
-  askBack.className='glass fade-up';
-  askBack.style.padding='clamp(24px,4vw,36px)';
-  askBack.style.marginTop='30px';
-  askBack.style.textAlign='left';
+  askBack.className = 'glass fade-up';
+  askBack.style.padding = 'clamp(24px,4vw,36px)';
+  askBack.style.marginTop = '30px';
+  askBack.style.textAlign = 'left';
   askBack.innerHTML = `
     <div class="eyebrow" style="margin-bottom:10px;">your turn, if you'd like</div>
     <h3 style="color:var(--plum); margin:0 0 10px 0; font-size:clamp(18px,3vw,22px);">Is there anything you'd like to ask me?</h3>
@@ -815,27 +840,27 @@ function renderFinal(){
     </p>
   `;
   const ta = document.createElement('textarea');
-  ta.rows=4;
+  ta.rows = 4;
   ta.placeholder = "Write anything you'd like to ask…";
   ta.value = answers['questionsForHim'] || '';
-  ta.oninput = ()=>{ answers['questionsForHim'] = ta.value; saveAnswers(); clearTimeout(window._resendTimer); window._resendTimer = setTimeout(()=>{ submitted=false; submitToSheet(); }, 1200); };
+  ta.oninput = () => { answers['questionsForHim'] = ta.value; saveAnswers(); clearTimeout(window._resendTimer); window._resendTimer = setTimeout(() => { submitted = false; submitToSheet(); }, 1200); };
   askBack.appendChild(ta);
 
   const btnRow = document.createElement('div');
-  btnRow.style.marginTop='20px';
-  btnRow.style.display='flex';
-  btnRow.style.gap='12px';
-  btnRow.style.flexWrap='wrap';
+  btnRow.style.marginTop = '20px';
+  btnRow.style.display = 'flex';
+  btnRow.style.gap = '12px';
+  btnRow.style.flexWrap = 'wrap';
 
   const copyBtn = document.createElement('button');
-  copyBtn.className='btn btn-ghost btn-sm';
+  copyBtn.className = 'btn btn-ghost btn-sm';
   copyBtn.innerHTML = '<span>Copy a summary of my answers</span>';
-  copyBtn.onclick = ()=>{
+  copyBtn.onclick = () => {
     const text = buildSummaryText() + (answers['questionsForHim'] ? "\n\nQuestions for you:\n" + answers['questionsForHim'] : '');
-    navigator.clipboard?.writeText(text).then(()=>{
+    navigator.clipboard?.writeText(text).then(() => {
       copyBtn.innerHTML = '<span>Copied ✓</span>';
-      setTimeout(()=> copyBtn.innerHTML='<span>Copy a summary of my answers</span>', 2200);
-    }).catch(()=>{
+      setTimeout(() => copyBtn.innerHTML = '<span>Copy a summary of my answers</span>', 2200);
+    }).catch(() => {
       alert(text);
     });
   };
@@ -844,35 +869,78 @@ function renderFinal(){
 
   panel.appendChild(askBack);
 
+  // A clear visual cue pointing at the final submit action
+  const submitCue = document.createElement('div');
+  submitCue.className = 'submit-cue fade-up';
+  submitCue.innerHTML = `
+    <span class="submit-cue-arrow" aria-hidden="true">↓</span>
+    <span class="submit-cue-text">You're all done — tap below to submit</span>
+    <span class="submit-cue-arrow" aria-hidden="true">↓</span>
+  `;
+  panel.appendChild(submitCue);
+
   const thanks = document.createElement('button');
-  thanks.className='btn fade-up';
-  thanks.style.marginTop='34px';
+  thanks.className = 'btn btn-cta fade-up';
+  thanks.id = 'main-submit-btn';
+  thanks.style.marginTop = '14px';
   thanks.innerHTML = '<span>Submit Responses</span><span aria-hidden="true">✨</span>';
-  thanks.onclick = ()=>{
+
+  function doSubmit() {
     spawnSparkle();
-    thanks.innerHTML = '<span>✨ Sent successfully</span>';
-    thanks.style.pointerEvents='none';
-    
+    [thanks, ...document.querySelectorAll('.sticky-submit-bar .btn')].forEach(b => {
+      b.innerHTML = '<span>✨ Sent successfully</span>';
+      b.style.pointerEvents = 'none';
+    });
+    removeStickyFooter();
+
     // Send answers one last time in case they modified questionsForHim
     submitted = false;
     submitToSheet();
-    
+
     setTimeout(() => {
       next();
     }, 1000);
-  };
+  }
+  thanks.onclick = doSubmit;
   panel.appendChild(thanks);
 
   stage.appendChild(panel);
+
+  // Sticky footer so the submit action stays reachable on long forms,
+  // especially on mobile where the button may sit below the fold.
+  let footer = null;
+  function removeStickyFooter() {
+    if (footer) { footer.remove(); footer = null; }
+    window.removeEventListener('scroll', updateFooterVisibility);
+  }
+  function updateFooterVisibility() {
+    const btnRect = thanks.getBoundingClientRect();
+    const isVisible = btnRect.top < window.innerHeight && btnRect.bottom > 0;
+    if (footer) footer.classList.toggle('show', !isVisible);
+  }
+  footer = document.createElement('div');
+  footer.className = 'sticky-submit-bar';
+  footer.innerHTML = `
+    <div class="sticky-submit-bar-inner">
+      <span class="sticky-submit-label">Ready to send your answers?</span>
+      <button class="btn btn-cta btn-sm"><span>Submit</span><span aria-hidden="true">✨</span></button>
+    </div>
+  `;
+  footer.querySelector('button').onclick = doSubmit;
+  document.body.appendChild(footer);
+  window.addEventListener('scroll', updateFooterVisibility, { passive: true });
+  updateFooterVisibility();
+  window._stickyFooterCleanup = removeStickyFooter;
+
   return stage;
 }
 
-function renderSuccess(){
+function renderSuccess() {
   const stage = document.createElement('div');
-  stage.className='stage';
+  stage.className = 'stage';
   const panel = document.createElement('div');
-  panel.className='panel glass fade-up';
-  panel.style.textAlign='center';
+  panel.className = 'panel glass fade-up';
+  panel.style.textAlign = 'center';
   panel.style.padding = 'clamp(32px,6vw,54px)';
   panel.innerHTML = `
     <div style="font-size: 64px; margin-bottom: 20px; animation: pulse 1.5s infinite alternate;">💌</div>
@@ -951,7 +1019,7 @@ function runConfetti() {
     });
   }
 
-  for(let i=0; i<3; i++) {
+  for (let i = 0; i < 3; i++) {
     setTimeout(spawnFirework, i * 600);
   }
   const fwInterval = setInterval(spawnFirework, 1400);
@@ -1043,28 +1111,32 @@ function runConfetti() {
 /* ---------------------------------------------------------
    MAIN RENDER
 --------------------------------------------------------- */
-function render(){
+function render() {
   if (window._canvasCleanup) {
     window._canvasCleanup();
     window._canvasCleanup = null;
   }
+  if (window._stickyFooterCleanup) {
+    window._stickyFooterCleanup();
+    window._stickyFooterCleanup = null;
+  }
   app.innerHTML = '';
   const screen = SCREENS[current];
   let stage;
-  if(screen.type === 'welcome') stage = renderWelcome();
-  else if(screen.type === 'story') stage = renderStory(screen);
-  else if(screen.type === 'question') stage = renderQuestion(screen.q);
-  else if(screen.type === 'fun') stage = renderFun();
-  else if(screen.type === 'reveal') stage = renderReveal();
-  else if(screen.type === 'letter') stage = renderLetter();
-  else if(screen.type === 'final') stage = renderFinal();
-  else if(screen.type === 'success') stage = renderSuccess();
+  if (screen.type === 'welcome') stage = renderWelcome();
+  else if (screen.type === 'story') stage = renderStory(screen);
+  else if (screen.type === 'question') stage = renderQuestion(screen.q);
+  else if (screen.type === 'fun') stage = renderFun();
+  else if (screen.type === 'reveal') stage = renderReveal();
+  else if (screen.type === 'letter') stage = renderLetter();
+  else if (screen.type === 'final') stage = renderFinal();
+  else if (screen.type === 'success') stage = renderSuccess();
   app.appendChild(stage);
   fadeInChildren(stage);
-  if(screen.type === 'story') activateStoryLines(stage);
-  if(screen.type === 'reveal') activateReveal(stage);
-  if(screen.type === 'letter') submitToSheet();
-  if(screen.type === 'success') {
+  if (screen.type === 'story') activateStoryLines(stage);
+  if (screen.type === 'reveal') activateReveal(stage);
+  if (screen.type === 'letter') submitToSheet();
+  if (screen.type === 'success') {
     window._canvasCleanup = runConfetti();
   }
   maybeSpawnSparkle();
@@ -1073,40 +1145,40 @@ function render(){
 /* ---------------------------------------------------------
    AMBIENT FX
 --------------------------------------------------------- */
-function initParticles(){
+function initParticles() {
   const wrap = document.getElementById('particles');
-  for(let i=0;i<18;i++){
+  for (let i = 0; i < 18; i++) {
     const p = document.createElement('div');
-    p.className='particle';
-    const size = 2 + Math.random()*4;
-    p.style.width = size+'px'; p.style.height = size+'px';
-    p.style.left = Math.random()*100+'%';
+    p.className = 'particle';
+    const size = 2 + Math.random() * 4;
+    p.style.width = size + 'px'; p.style.height = size + 'px';
+    p.style.left = Math.random() * 100 + '%';
     p.style.bottom = '-20px';
-    p.style.animationDuration = (14 + Math.random()*14)+'s';
-    p.style.animationDelay = (Math.random()*14)+'s';
+    p.style.animationDuration = (14 + Math.random() * 14) + 's';
+    p.style.animationDelay = (Math.random() * 14) + 's';
     wrap.appendChild(p);
   }
 }
-function initStars(){
+function initStars() {
   const wrap = document.getElementById('stars');
-  for(let i=0;i<26;i++){
+  for (let i = 0; i < 26; i++) {
     const s = document.createElement('div');
-    s.className='star';
-    s.style.left = Math.random()*100+'%';
-    s.style.top = Math.random()*60+'%';
-    s.style.animationDelay = (Math.random()*3.5)+'s';
+    s.className = 'star';
+    s.style.left = Math.random() * 100 + '%';
+    s.style.top = Math.random() * 60 + '%';
+    s.style.animationDelay = (Math.random() * 3.5) + 's';
     wrap.appendChild(s);
   }
 }
-document.addEventListener('mousemove', (e)=>{
+document.addEventListener('mousemove', (e) => {
   const glow = document.getElementById('mouse-glow');
-  glow.style.left = e.clientX+'px';
-  glow.style.top = e.clientY+'px';
+  glow.style.left = e.clientX + 'px';
+  glow.style.top = e.clientY + 'px';
 });
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-if(reduceMotion){
-  document.documentElement.style.setProperty('--motion','0');
+if (reduceMotion) {
+  document.documentElement.style.setProperty('--motion', '0');
 }
 
 initParticles();
