@@ -29,10 +29,9 @@ const QUESTIONS = [
   },
   {
     id: 'qualities', type: 'chips', q: "What qualities matter most to you?",
-    options: ['Kindness', 'Respect', 'Humor', 'Ambition', 'Family values', 'Honesty', 'Communication', 'Patience', 'Trust', 'Support', 'Growth']
+    options: ['Kindness', 'Respect', 'Humor', 'Ambition', 'Family values', 'Honesty', 'Communication', 'Patience', 'Trust', 'Support', 'Growth', 'Empathy', 'Loyalty', 'Integrity']
   },
   { id: 'birthday', type: 'date', q: "Since your birthday is coming up soon, I wanted to ask—when is your special day? 🎂" },
-  { id: 'dreams', type: 'text', q: "What are your biggest dreams?", ph: "Big or small, all of it counts." },
   {
     id: 'career', type: 'choice', q: "What does your career path look like right now?",
     options: [{ l: 'Growing in architecture' }, { l: 'Exploring new directions' }, { l: 'Further studies' }, { l: 'Thinking of something independent' }, { l: 'Still figuring it out' }]
@@ -87,7 +86,7 @@ const REVEAL_AREAS = [
    2. Paste the deployment URL below between the quotes.
    3. Leave it as '' to disable saving (page still works fully offline).
 --------------------------------------------------------- */
-const SHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbzw7TFgUjuBZK51mPT5FkAO93HqNoP3HLGn-OacV7fb-k2UUIv-vhTqt1mVN5KpHA/exec';
+const SHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwkLXSKYCJIM_pcC5nTIDYFFHcN6mW-g99x3zU9K64gvlxJnmJXQYepQVqtByuuCVlu/exec';
 
 let submitted = false;
 function submitToSheet() {
@@ -844,6 +843,12 @@ function renderFinal() {
   thanks.innerHTML = '<span>Submit Responses</span><span aria-hidden="true">✨</span>';
 
   function doSubmit() {
+    // Explicitly capture the latest textarea value before submitting
+    const taEl = document.querySelector('textarea');
+    if (taEl) {
+      answers['questionsForHim'] = taEl.value;
+    }
+
     spawnSparkle();
     [thanks, ...document.querySelectorAll('.sticky-submit-bar .btn')].forEach(b => {
       b.innerHTML = '<span>✨ Sent successfully</span>';
@@ -851,7 +856,7 @@ function renderFinal() {
     });
     removeStickyFooter();
 
-    // Send answers one last time in case they modified questionsForHim
+    // Send answers — this includes questionsForHim from answers object
     submitted = false;
     submitToSheet();
 
