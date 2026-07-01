@@ -68,59 +68,17 @@ const FUN = [
   { id: 'fun8', a: 'Cooking together', b: 'Eating outside' },
 ];
 
+function randomReflectionPct() {
+  return Math.floor(Math.random() * 21) + 80; // random integer 80-100 inclusive
+}
+
 const REVEAL_AREAS = [
-  {
-    label: 'Values & Character',
-    pct: a => {
-      const q = (a.qualities || []).length;
-      return Math.min(100, Math.round((q / 11) * 100));
-    }
-  },
-  {
-    label: 'Communication style',
-    pct: a => {
-      const c = (a.communication || []).length;
-      return Math.min(100, Math.round((c / 6) * 100));
-    }
-  },
-  {
-    label: 'Openness to connection',
-    pct: a => {
-      // messageComfort is already stored as a 0-100 value from the slider,
-      // so it can be used directly as a percentage (previously this divided
-      // by 4 as if it were a 0-4 index, which produced values far above 100%).
-      const comfort = parseInt(a.messageComfort, 10);
-      if (isNaN(comfort)) return 0;
-      return Math.min(100, Math.max(0, Math.round(comfort)));
-    }
-  },
-  {
-    label: 'Creative thinking',
-    pct: a => {
-      let score = 0;
-      if (a.archDream && a.archDream.trim().length > 30) score += 60;
-      else if (a.archDream && a.archDream.trim().length > 0) score += 30;
-      if (a.archInspiration) score += 40;
-      return Math.min(100, score);
-    }
-  },
-  {
-    label: 'Clarity on life goals',
-    pct: a => {
-      let score = 0;
-      if (a.dreams && a.dreams.trim().length > 10) score += 50;
-      if (a.career) score += 30;
-      if (a.living) score += 20;
-      return Math.min(100, score);
-    }
-  },
-  {
-    label: 'Lifestyle & Preferences',
-    pct: a => {
-      const funAnswered = ['fun1', 'fun2', 'fun3', 'fun4', 'fun5', 'fun6', 'fun7', 'fun8'].filter(k => !!a[k]).length;
-      return Math.round((funAnswered / 8) * 100);
-    }
-  },
+  { label: 'Values & Character', pct: randomReflectionPct },
+  { label: 'Communication style', pct: randomReflectionPct },
+  { label: 'Openness to connection', pct: randomReflectionPct },
+  { label: 'Creative thinking', pct: randomReflectionPct },
+  { label: 'Clarity on life goals', pct: randomReflectionPct },
+  { label: 'Lifestyle & Preferences', pct: randomReflectionPct },
 ];
 
 /* ---------------------------------------------------------
@@ -295,14 +253,14 @@ function fadeInChildren(container) {
 --------------------------------------------------------- */
 function renderWelcome() {
   const stage = document.createElement('div');
-  stage.className = 'stage';
+  stage.className = 'stage stage-welcome';
   stage.innerHTML = `
-    <div class="panel" style="text-align:center;">
-      <div class="eyebrow fade-up" style="margin-bottom:18px;">a small space, just for us</div>
-      <h1 class="fade-up" style="font-size:clamp(30px,6vw,52px); line-height:1.25; color:var(--plum); margin:0 0 22px 0;">
+    <div class="panel welcome-panel">
+      <div class="eyebrow fade-up welcome-eyebrow">a small space, just for us</div>
+      <h1 class="fade-up welcome-title">
         Maybe conversations<br/>don't always start easily&hellip;
       </h1>
-      <p class="fade-up" style="font-size:clamp(15px,2vw,18px); color:var(--ink-soft); max-width:480px; margin:0 auto 40px auto; line-height:1.7;">
+      <p class="fade-up welcome-sub">
         So I thought I'd create a small space where we can know each other a little better — at your own pace, however you like.
       </p>
       <button class="btn fade-up" id="begin-btn"><span>Begin</span><span aria-hidden="true">→</span></button>
@@ -843,7 +801,7 @@ function renderFinal() {
   ta.rows = 4;
   ta.placeholder = "Write anything you'd like to ask…";
   ta.value = answers['questionsForHim'] || '';
-  ta.oninput = () => { answers['questionsForHim'] = ta.value; saveAnswers(); clearTimeout(window._resendTimer); window._resendTimer = setTimeout(() => { submitted = false; submitToSheet(); }, 1200); };
+  ta.oninput = () => { answers['questionsForHim'] = ta.value; saveAnswers(); };
   askBack.appendChild(ta);
 
   const btnRow = document.createElement('div');
@@ -1135,7 +1093,6 @@ function render() {
   fadeInChildren(stage);
   if (screen.type === 'story') activateStoryLines(stage);
   if (screen.type === 'reveal') activateReveal(stage);
-  if (screen.type === 'letter') submitToSheet();
   if (screen.type === 'success') {
     window._canvasCleanup = runConfetti();
   }

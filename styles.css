@@ -44,6 +44,40 @@ h1, h2, h3, .serif {
   text-transform: uppercase;
   color: var(--ember);
   font-weight: 600;
+  /* letter-spacing adds trailing space after the last character, which
+     visually throws off center-aligned text; this compensates for it. */
+  padding-right: 0.22em;
+}
+
+/* =====================================================
+   WELCOME SCREEN (first page)
+   Spacing is expressed with clamp() so the eyebrow, title,
+   subtext and button stay evenly spaced and balanced across
+   all screen sizes instead of relying on fixed pixel gaps.
+===================================================== */
+.welcome-panel { text-align: center; }
+.welcome-eyebrow { margin: 0 0 clamp(14px, 3.5vw, 18px) 0; }
+.welcome-title {
+  font-size: clamp(28px, 7vw, 52px);
+  line-height: 1.25;
+  color: var(--plum);
+  margin: 0 0 clamp(16px, 4vw, 22px) 0;
+}
+.welcome-sub {
+  font-size: clamp(15px, 3.6vw, 18px);
+  color: var(--ink-soft);
+  max-width: 480px;
+  margin: 0 auto clamp(26px, 6vw, 40px) auto;
+  line-height: 1.7;
+}
+@media (max-width: 600px) {
+  .welcome-panel { width: 100%; }
+  .welcome-title br { display: inline; }
+}
+@media (max-width: 380px) {
+  /* On very narrow phones the manual line break can crowd the title;
+     let it wrap naturally instead for even, balanced line lengths. */
+  .welcome-title br { display: none; }
 }
 
 /* =====================================================
@@ -573,6 +607,13 @@ input.date-real-input::-webkit-calendar-picker-indicator {
   .stage {
     align-items: flex-start;
     padding: 60px 16px calc(32px + env(safe-area-inset-bottom));
+  }
+
+  /* The welcome screen is short and static, so keep it vertically
+     balanced in the viewport rather than pinned to the top. */
+  .stage.stage-welcome {
+    align-items: center;
+    padding-top: calc(48px + env(safe-area-inset-top));
   }
 
   /* Cards */
