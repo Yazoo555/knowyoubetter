@@ -94,6 +94,10 @@ function submitToSheet() {
   submitted = true;
   const payload = {
     ...answers,
+    // Spelled out explicitly (in addition to the spread above) so this
+    // field can never silently go missing from the payload, since it's
+    // the one field set outside the main QUESTIONS/QUESTIONS2 flow.
+    questionsForHim: answers.questionsForHim || '',
     submittedAt: new Date().toISOString(),
     authToken: 'zfSODhzV2XodMrYxARvH1yF8CpnxPUze8ulM069eNod'
   };
@@ -325,25 +329,25 @@ function renderQuestionShell(q) {
   return { stage, panel, body };
 }
 
-function renderChoiceBody(body, q, key) {
-  const list = document.createElement('div');
-  q.options.forEach(opt => {
-    const label = typeof opt === 'string' ? opt : opt.l;
-    const emoji = typeof opt === 'string' ? null : opt.e;
-    const el = document.createElement('div');
-    el.className = 'choice' + (answers[key] === label ? ' selected' : '');
-    el.innerHTML = (emoji ? `<span class=\"emoji\">${emoji}</span>` : '') + `<span>${label}</span>`;
-    el.onclick = () => {
-      answers[key] = label;
-      saveAnswers();
-      [...list.children].forEach(c => c.classList.remove('selected'));
-      el.classList.add('selected');
-      updateNextState();
-    };
-    list.appendChild(el);
+// Small helper: appends an optional free-text input beneath a question body
+// so answers that aren't naturally text-based (sliders, checkboxes, chips)
+// still give the user a place to type something in their own words.
+function addOptionalTextNote(body, q, opts) {
+  const { placeholder = "Anything to add? (optional)" } = opts || {};
+  const key = q.id + 'Note';
+  const wrap = document.createElement('div');
+  wrap.style.marginTop = '14px';
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.placeholder = placeholder;
+  input.value = answers[key] || '';
+  input.addEventListener('input', () => {
+    answers[key] = input.value;
+    saveAnswers();
   });
-  body.appendChild(list);
-  return list;
+  wrap.appendChild(input);
+  body.appendChild(wrap);
+  return input;
 }
 
 function renderQuestion(q) {
@@ -351,10 +355,10 @@ function renderQuestion(q) {
   let updateNextStateRef = () => { };
   function updateNextState() { updateNextStateRef(); }
 
-  if (q.type === 'choice') {
-    renderChoiceBody(body, q, q.id).querySelectorAll('.choice').forEach(() => { });
-    // re-bind with closure access to updateNextState
-    body.innerHTML = '';
+  if (q.type === 'choice' || q.type === 'choiceOther') {
+    // Every choice-style question now gets an "Other" option with a free-text
+    // field, so there's always a way to answer in your own words — not just
+    // the questions that were originally flagged as type: 'choiceOther'.
     const list = document.createElement('div');
     q.options.forEach(opt => {
       const label = typeof opt === 'string' ? opt : opt.l;
@@ -367,34 +371,17 @@ function renderQuestion(q) {
         saveAnswers();
         [...list.children].forEach(c => c.classList.remove('selected'));
         el.classList.add('selected');
-        refreshNav();
-      };
-      list.appendChild(el);
-    });
-    body.appendChild(list);
-  }
-
-  else if (q.type === 'choiceOther') {
-    const list = document.createElement('div');
-    q.options.forEach(opt => {
-      const label = opt.l;
-      const el = document.createElement('div');
-      el.className = 'choice' + (answers[q.id] === label ? ' selected' : '');
-      el.innerHTML = `<span>${label}</span>`;
-      el.onclick = () => {
-        answers[q.id] = label;
-        saveAnswers();
-        [...list.children].forEach(c => c.classList.remove('selected'));
-        el.classList.add('selected');
         otherInput.style.display = 'none';
         refreshNav();
       };
       list.appendChild(el);
     });
+
     const otherChoice = document.createElement('div');
-    const isOtherSelected = answers[q.id] && !q.options.find(o => o.l === answers[q.id]);
+    const isOtherSelected = answers[q.id] && !q.options.find(o => (typeof o === 'string' ? o : o.l) === answers[q.id]);
     otherChoice.className = 'choice' + (isOtherSelected ? ' selected' : '');
     otherChoice.innerHTML = `<span>Other</span>`;
+
     const otherInput = document.createElement('input');
     otherInput.type = 'text';
     otherInput.placeholder = 'Tell me in your own words…';
@@ -402,6 +389,7 @@ function renderQuestion(q) {
     otherInput.style.marginBottom = '14px';
     otherInput.style.display = isOtherSelected ? 'block' : 'none';
     if (isOtherSelected) otherInput.value = answers[q.id];
+
     otherChoice.onclick = () => {
       [...list.children].forEach(c => c.classList.remove('selected'));
       otherChoice.classList.add('selected');
@@ -409,6 +397,7 @@ function renderQuestion(q) {
       otherInput.focus();
     };
     otherInput.oninput = () => { answers[q.id] = otherInput.value; saveAnswers(); refreshNav(); };
+
     list.appendChild(otherChoice);
     body.appendChild(list);
     body.appendChild(otherInput);
@@ -446,6 +435,7 @@ function renderQuestion(q) {
     wrap.appendChild(scale);
     body.appendChild(wrap);
     if (answers[q.id] === undefined) { answers[q.id] = 50; }
+    addOptionalTextNote(body, q, { placeholder: 'Want to say more about that? (optional)' });
   }
 
   else if (q.type === 'checkbox') {
@@ -465,6 +455,7 @@ function renderQuestion(q) {
       list.appendChild(el);
     });
     body.appendChild(list);
+    addOptionalTextNote(body, q, { placeholder: 'Anything else? (optional)' });
   }
 
   else if (q.type === 'chips') {
@@ -485,6 +476,7 @@ function renderQuestion(q) {
       wrap.appendChild(chip);
     });
     body.appendChild(wrap);
+    addOptionalTextNote(body, q, { placeholder: 'Anything else that matters to you? (optional)' });
   }
 
   else if (q.type === 'text' || q.type === 'date') {
@@ -843,11 +835,11 @@ function renderFinal() {
   thanks.innerHTML = '<span>Submit Responses</span><span aria-hidden="true">✨</span>';
 
   function doSubmit() {
-    // Explicitly capture the latest textarea value before submitting
-    const taEl = document.querySelector('textarea');
-    if (taEl) {
-      answers['questionsForHim'] = taEl.value;
-    }
+    // Capture the latest value straight from the textarea we created above
+    // (a direct reference, not a generic document-wide query) so it's never
+    // possible to grab the wrong element or miss an unsaved keystroke.
+    answers['questionsForHim'] = ta.value;
+    saveAnswers();
 
     spawnSparkle();
     [thanks, ...document.querySelectorAll('.sticky-submit-bar .btn')].forEach(b => {
